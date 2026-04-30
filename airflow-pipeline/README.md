@@ -1,13 +1,13 @@
 # 🎵 Genie Playlist Pipeline (Airflow DAG)
 
-> Genie Music 플레이리스트 태그 벡터를 추출하고 Elasticsearch에 자동 인덱싱하는 데이터 파이프라인
+> Genie Music 플레이리스트 CSV를 읽어 29차원 멀티-핫 태그 벡터로 변환하고 Elasticsearch에 자동 인덱싱하는 데이터 파이프라인
 
 <br>
 
 ## 📌 개요
 
 Apache Airflow로 오케스트레이션된 4단계 DAG입니다.  
-플레이리스트 데이터를 29차원 멀티-핫 태그 벡터로 변환하고,  
+플레이리스트 CSV에서 29차원 멀티-핫 태그 벡터를 추출·정규화하고,  
 Elasticsearch에 bulk 인덱싱하는 전 과정을 자동화합니다.
 
 스케줄: **매주 월요일 새벽 2시** 자동 실행
