@@ -1,6 +1,6 @@
 # 🎵 이미지 기반 음악 추천 시스템
 
-> 사진 한 장으로 분위기에 맞는 음악을 추천하는 AI 파이프라인
+> 사진 N장으로 분위기에 맞는 음악을 추천하는 AI 파이프라인
 
 <br>
 
@@ -66,7 +66,7 @@ music-recommend-system/
 | 백엔드 | FastAPI |
 | 프론트엔드 | Flutter |
 | 인프라 | Docker, Docker Compose |
-| 언어 | Python 3.x |
+| 언어 | Python 3.9.6 |
 
 <br>
 
