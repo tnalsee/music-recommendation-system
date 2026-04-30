@@ -1,0 +1,7 @@
+http.host: 0.0.0.0
+path.config: /usr/share/logstash/pipeline
+pipeline.id: main
+pipeline.workers: 1
+xpack.monitoring.elasticsearch.hosts:
+- http://elasticsearch:9200
+xpack.monitoring.enabled: false

@@ -1,0 +1,14 @@
+# /logs/fastapi.log 파일을 감시하다가 새 줄 생기면 Logstash로 전송
+
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /logs/fastapi.log # 감시할 로그 파일 경로 (컨테이너 내부 경로)
+
+output.logstash:
+  hosts: ["logstash:5044"] # Logstash 컨테이너로 전송
+
+logging.level: info
+
+filebeat.config.strict.perms: false

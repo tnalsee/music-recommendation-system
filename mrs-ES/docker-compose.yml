@@ -1,0 +1,51 @@
+services:
+  elasticsearch: # 데이터 저장소
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+    container_name: mrs-ES
+    environment:
+      - node.name=mrs-ES-node
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+
+  kibana: # 시각화 UI
+    image: docker.elastic.co/kibana/kibana:8.13.0
+    container_name: mrs-kibana-node
+    ports:
+      - "5601:5601" 
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+
+  logstash: # 로그 파싱 파이프라인
+    image: docker.elastic.co/logstash/logstash:8.13.0
+    container_name: mrs-logstash
+    ports:
+      - "5044:5044" # Filebeat 수신 포트
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline # logstash.conf 마운트
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml # logstash.yml 마운트
+    environment:
+      - PIPELINE_WORKERS=1
+    depends_on:
+      - elasticsearch
+
+  filebeat: # 로그 파일 수집기
+    image: docker.elastic.co/beats/filebeat:8.13.0
+    container_name: mrs-filebeat
+    user: root # 파일 읽기 권한
+    command: ["filebeat", "-e", "--strict.perms=false"] # 권한 오류 우회
+    volumes:
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - E:/coconut2/logs:/logs:ro # 로컬 로그 폴더 → 컨테이너 /logs 에 마운트
+    depends_on:
+      - logstash
+
+volumes:
+  es-data:
+    driver: local
