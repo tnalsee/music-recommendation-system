@@ -42,7 +42,7 @@ index_to_es
 | 오케스트레이션 | Apache Airflow 2.9.1 |
 | 벡터 검색 | Elasticsearch 8.13 |
 | 인프라 | Docker, Docker Compose |
-| 언어 | Python 3.x |
+| 언어 | Python 3.9.6 |
 | 주요 라이브러리 | pandas, numpy, elasticsearch-py |
 
 <br>
