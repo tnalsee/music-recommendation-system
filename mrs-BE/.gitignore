@@ -186,11 +186,10 @@ pyvenv.cfg
 pip-selfcheck.json
 
 # 이미지 디렉토리
-images/
-test_images/
+#images/
 
 # 모델
-ml
+*.pth 
 
 # csv파일
 csv
