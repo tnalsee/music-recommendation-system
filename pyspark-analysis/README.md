@@ -31,7 +31,7 @@ pyspark-analysis/
 
 | 항목 | 내용 |
 |---|---|
-| 언어 | Python 3.x |
+| 언어 | Python 3.14.4 |
 | 분산 처리 | PySpark 4.1.1 (local[4]) |
 | 데이터 처리 | pandas, numpy |
 | 런타임 | Java 21, Anaconda 가상환경 |
