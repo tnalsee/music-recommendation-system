@@ -1,0 +1,10 @@
+{
+  "load_sec": 12.1587,
+  "preprocess_sec": 12.6424,
+  "cooccurrence_sec": 8.0613,
+  "top10_sec": 0.5729,
+  "groupby_sec": 2.0124,
+  "total_sec": 35.8443,
+  "rows": 500000,
+  "partitions": 4
+}
